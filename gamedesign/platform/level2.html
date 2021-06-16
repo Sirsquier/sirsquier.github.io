@@ -1,0 +1,258 @@
+<html>
+<head>
+<title> The Adventures of Ryzolo The Slime </title>
+<script src="https://simplycodingcourses.com/files/simply.js"></script>
+	<script>
+
+		var level = [];
+
+
+		function start(){
+			sjs.open("target",800,500);
+
+			//background music
+			var playM = new Audio('Music/only.mp3');
+			var toggle = true;
+			var musicOn = false;
+			sjs.keyDown(SPACE_KEY, function(){
+				if(toggle == true){
+					if(musicOn == false){
+							playM.play();
+							musicOn = true;
+					} else {
+						playM.pause();
+						musicOn = false;
+					}
+					toggle = false;
+					setTimeout(function(){
+						toggle = true;
+					},1000);
+				}	
+			});
+
+
+				var background = new sjs.Image("Images/background_for_level_2.png");
+				background.setSize(2500, 500);
+
+				sjs.loadImageArray('[{"width":136,"height":30,"x":204,"y":444,"sx":0,"sy":0,"topSpeed":10,"src":"Images/platformwithgrass.png","alt":"add text","type":"platform","friction":0.05,"classType":"Image"},{"width":136,"height":30,"x":614,"y":437,"sx":0,"sy":0,"topSpeed":10,"src":"Images/platformwithgrass.png","alt":"add text","type":"platform","friction":0.05,"classType":"Image"},{"width":81,"height":93,"x":523,"y":407,"sx":1.5,"sy":1,"ay":1,"topSpeed":10,"src":"Images/evil2.png","alt":"add text","type":"enemy","facingLeft":false,"left_img":"Images/evil2.png","right_img":"Images/evil2.png","friction":0,"classType":"Image","noBounds":true},{"width":25,"height":30,"x":343.092567758296,"y":369,"sx":0,"sy":0,"topSpeed":10,"src":"Images/coin.png","alt":"add text","type":"score","friction":0.05,"classType":"Image"},{"width":25,"height":30,"x":464.092567758296,"y":305,"sx":0,"sy":0,"topSpeed":10,"src":"Images/coin.png","alt":"add text","type":"score","friction":0.05,"classType":"Image"},{"width":25,"height":30,"x":586.092567758296,"y":370,"sx":0,"sy":0,"topSpeed":10,"src":"Images/coin.png","alt":"add text","type":"score","friction":0.05,"classType":"Image"},{"width":136,"height":30,"x":975.7404670824612,"y":319,"sx":0,"sy":0,"topSpeed":10,"src":"Images/platformwithgrass.png","alt":"add text","type":"platform","friction":0.05,"classType":"Image"},{"width":136,"height":30,"x":990.2404670824612,"y":456,"sx":0,"sy":0,"topSpeed":10,"src":"Images/platformwithgrass.png","alt":"add text","type":"platform","friction":0.05,"classType":"Image"},{"width":81,"height":93,"x":768.2404670824612,"y":407,"sx":-1.5,"sy":1,"ay":1,"topSpeed":10,"src":"Images/evil2.png","alt":"add text","type":"enemy","facingLeft":true,"left_img":"Images/evil2.png","right_img":"Images/evil2.png","friction":0,"classType":"Image","noBounds":true},{"width":25,"height":30,"x":794.8308077281011,"y":331,"sx":0,"sy":0,"topSpeed":10,"src":"Images/coin.png","alt":"add text","type":"score","friction":0.05,"classType":"Image"},{"width":25,"height":30,"x":886.8308077281011,"y":234,"sx":0,"sy":0,"topSpeed":10,"src":"Images/coin.png","alt":"add text","type":"score","friction":0.05,"classType":"Image"},{"width":25,"height":30,"x":1011.8308077281011,"y":270,"sx":0,"sy":0,"topSpeed":10,"src":"Images/coin.png","alt":"add text","type":"score","friction":0.05,"classType":"Image"},{"width":25,"height":30,"x":1042.8308077281013,"y":427,"sx":0,"sy":0,"topSpeed":10,"src":"Images/coin.png","alt":"add text","type":"score","friction":0.05,"classType":"Image"},{"width":136,"height":30,"x":1228.3892339638842,"y":467,"sx":0,"sy":0,"topSpeed":10,"src":"Images/platformwithgrass.png","alt":"add text","type":"platform","friction":0.05,"classType":"Image"},{"width":136,"height":30,"x":1214.3892339638842,"y":464,"sx":0,"sy":0,"topSpeed":10,"src":"Images/platformwithgrass.png","alt":"add text","type":"platform","friction":0.05,"classType":"Image"},{"width":136,"height":30,"x":1215.8692501338842,"y":446,"sx":0,"sy":0,"topSpeed":10,"src":"Images/platformwithgrass.png","alt":"add text","type":"platform","friction":0.05,"classType":"Image"},{"width":136,"height":30,"x":1220.8692501338842,"y":430,"sx":0,"sy":0,"topSpeed":10,"src":"Images/platformwithgrass.png","alt":"add text","type":"platform","friction":0.05,"classType":"Image"},{"width":136,"height":30,"x":1219.8692501338842,"y":415,"sx":0,"sy":0,"topSpeed":10,"src":"Images/platformwithgrass.png","alt":"add text","type":"platform","friction":0.05,"classType":"Image"},{"width":136,"height":30,"x":1219.8692501338842,"y":391,"sx":0,"sy":0,"topSpeed":10,"src":"Images/platformwithgrass.png","alt":"add text","type":"platform","friction":0.05,"classType":"Image"},{"width":136,"height":30,"x":1235.3692501338842,"y":366,"sx":0,"sy":0,"topSpeed":10,"src":"Images/platformwithgrass.png","alt":"add text","type":"platform","friction":0.05,"classType":"Image"},{"width":136,"height":30,"x":1104.3692501338842,"y":363,"sx":0,"sy":0,"topSpeed":10,"src":"Images/platformwithgrass.png","alt":"add text","type":"platform","friction":0.05,"classType":"Image"},{"width":25,"height":30,"x":1388.883958051614,"y":243,"sx":0,"sy":0,"topSpeed":10,"src":"Images/coin.png","alt":"add text","type":"score","friction":0.05,"classType":"Image"},{"width":25,"height":30,"x":1461.883958051614,"y":196,"sx":0,"sy":0,"topSpeed":10,"src":"Images/coin.png","alt":"add text","type":"score","friction":0.05,"classType":"Image"},{"width":25,"height":30,"x":1519.883958051614,"y":169,"sx":0,"sy":0,"topSpeed":10,"src":"Images/coin.png","alt":"add text","type":"score","friction":0.05,"classType":"Image"},{"width":66,"height":15,"x":1607.883958051614,"y":328.5,"sx":0,"sy":0,"topSpeed":10,"src":"Images/bounceyboi.png","alt":"add text","type":"jump_pad","friction":0.05,"classType":"Image"},{"width":136,"height":30,"x":1780.4423751117265,"y":223,"sx":0,"sy":0,"topSpeed":10,"src":"Images/platformwithgrass.png","alt":"add text","type":"platform","friction":0.05,"classType":"Image"},{"width":136,"height":30,"x":2051.0387872656775,"y":386,"sx":0,"sy":0,"topSpeed":10,"src":"Images/platformwithgrass.png","alt":"add text","type":"platform","friction":0.05,"classType":"Image"},{"width":25,"height":30,"x":1943.5387872656775,"y":238,"sx":0,"sy":0,"topSpeed":10,"src":"Images/coin.png","alt":"add text","type":"score","friction":0.05,"classType":"Image"},{"width":25,"height":30,"x":2012.5387872656775,"y":324,"sx":0,"sy":0,"topSpeed":10,"src":"Images/coin.png","alt":"add text","type":"score","friction":0.05,"classType":"Image"},{"width":81,"height":93,"x":1606.8892339638842,"y":407,"sx":1.5,"sy":0,"ay":1,"topSpeed":10,"src":"Images/evil2.png","alt":"add text","type":"enemy","facingLeft":false,"left_img":"Images/evil2.png","right_img":"Images/evil2.png","friction":0,"classType":"Image","noBounds":true},{"width":136,"height":30,"x":2049.0387872656775,"y":446,"sx":0,"sy":0,"topSpeed":10,"src":"Images/platformwithgrass.png","alt":"add text","type":"platform","friction":0.05,"classType":"Image"},{"width":31,"height":80,"x":2115.5387872656775,"y":314,"sx":0,"sy":0,"topSpeed":10,"src":"Images/enemy_flag.png","alt":"add text","type":"flag","friction":0.05,"classType":"Image"}]');
+
+				//Player
+				var player = new sjs.Image("Images/slimy_boi.png");
+				player.type = "player";
+				player.setSize(85,93);	
+				player.setGravity(3);
+				player.bottom();
+				player.friction = .3;
+				player.noBounds = true;
+
+			sjs.scrollable(player,background);
+
+				//Player Controls
+
+				var r_images = ["Images/slimy_boi.png"];
+
+				var l_images = ["Images/slimy_boi.png"];
+
+				var r_facing = true;
+				var r_track = 0;
+				var l_track = 0;
+
+
+			sjs.keyDown(RIGHT_KEY, function(){
+				r_facing = true;
+				r_track = r_track + 1;
+				player.pushRight(2);
+				player.setImage("Images/slimy_boi.png");
+				if(r_track == 7){
+				r_track = 0;
+				}
+				if(r_track >= 8){
+				player.setImage("Images/slimy_boi_jump.png");
+				}
+			});
+
+			sjs.keyDown(LEFT_KEY, function(){
+				r_facing = false;
+				l_track = l_track + 1
+				player.pushLeft(2);
+				player.setImage("Images/slimy_boi.png");
+				if(l_track == 7){
+				l_track = 0;
+				}
+				if(l_track >= 8){
+				player.setImage("Images/slimy_boi_jump.png");
+				}
+			}); 
+
+
+			//sound effects
+				var soundLand = new Audio ('Music/land.mp3');
+				var soundShot = new Audio ('Music/shot.mp3');
+				var soundDeath = new Audio ('Music/deathcry.mp3');
+
+				//jump
+
+				var canJump = true;
+
+			sjs.keyDown(UP_KEY, function(){
+				if(canJump == true){
+					canJump = false;
+					player.pushUp(55);
+				} 
+				if(r_facing == true){
+					player.setImage("Images/slimy_boi_jump.png");
+					r_track = 8;
+				} else {
+					player.setImage("Images/slimy_boi_jump.png");
+				l_track = 8;
+				}
+				
+			}); 
+
+			window.addEventListener("keyup", function(e){
+				if(e.keyCode == RIGHT_KEY){
+					player.setImage("Images/slimy_boi.png");
+					r_track = 0;
+				} else if (e.keyCode == LEFT_KEY){
+					player.setImage("Images/slimy_boi.png");
+					l_track = 0;
+				}
+
+			});
+
+			sjs.keyDown(DOWN_KEY, function(){
+				if(canShoot == true){
+					canShoot = false;
+					var laser = new sjs.Image("Images/blob.png");
+					laser.type = "laser";
+					laser.setSize(100,50);
+					laser.friction = 0;
+					laser.noBounds = true;
+					if(r_facing == true){
+					laser.moveTo(player.getX()+44,player.getY()+7);
+						laser.pushRight(25.5);
+					} else {
+					laser.moveTo(player.getX()+-60,player.getY()+7);
+						laser.pushLeft(25.5);
+					}
+					setTimeout(function(){
+					canShoot = true;
+					},1500);
+				}
+			});
+
+			//onhit stuff
+
+			sjs.onHit("player","bottom_screen",function(x,y){
+				sjs.stoppedBy(x,y);
+				if(canJump == false){
+				canJump = true;
+				r_track = 0;
+				l_track = 0;
+				}
+			});
+
+
+			sjs.onHit("player",["right_screen","left_screen","top_screen"],function(x,y){
+				sjs.stoppedBy(x,y);
+			});
+
+
+			sjs.onHit("player", "platform", function(x,y){
+				sjs.stoppedBy(x,y);
+				if (canJump == false && x.y < y.y-85){
+				canJump = true;	
+				r_track = 0;
+				l_track = 0;
+				}
+			});
+
+			var canShoot = false;
+			sjs.onHit("player","powerUp", function(x,y){
+				canShoot = true;
+				y.destroy();
+			});
+		var score = 0;
+			var score_txt = new sjs.Text("Score: 0", 21, "green");
+			score_txt.setText("Score: " +localStorage.getItem("score"));
+			score_txt.right().offset(-20, 0);
+			score_txt.fixed = true;
+			sjs.onHit("player","score", function(x,y){
+			score = score + 1;
+			score_txt.setText("Score :"+ score);
+			localStorage.setItem("score", score);
+			y.destroy();
+			});
+
+			
+
+		var flagOn = true;
+			sjs.onHit("player","flag", function(x,y){
+				x.stop();
+				if(flagOn == true){
+				flagOn = false;
+				setTimeout(function(){
+					y.setImage("Images/empty_flag.png");
+				},800 );
+				setTimeout(function(){
+					y.setImage("Images/your_flag.png");
+				},1600 );
+				setTimeout(function(){
+					window.location = "level3.html";
+			},2400 );
+				}	
+			});
+
+				sjs.onHit("enemy", "bottom_screen", function(x,y){
+				sjs.stoppedBy(x,y);
+			});
+
+			sjs.onHit("enemy", ["left_screen", "right_screen"], function(){
+				sjs.bounceOff(x,y);
+			});
+
+			sjs.onHit("enemy","platform", function(x,y){
+			if(x.isAboveOf(y) == true){
+			sjs.stoppedBy(x,y);
+			} else {
+			sjs.bounceOff(x,y);
+			}
+			})
+
+			sjs.onHit("player","jump_pad", function(x,y){
+			if(x.isAboveOf(y) == true){
+			player.pushUp(50);
+			} else {
+			sjs.stoppedBy(x,y);
+			}
+			});
+
+			sjs.onHit("player","enemy", function(x,y){
+			x.destroy();
+			window.location = "level2.html";
+			});
+
+			sjs.onHit("laser", "enemy", function(x,y){
+				x.destroy();
+				y.destroy();
+			});
+
+			sjs.onHit("laser",["platform","jump_pad", "powerUp","score","flag"], function(x,y){
+			x.destroy();
+			});
+
+			sjs.onHit("laser",["right_screen","left_screen"], function(x,y){
+			x.destroy();
+			});
+		} //end start
+
+	
+
+	</script>
+</head>
+<body onload="start()">
+<h1> Stark Swamps </h1>
+<div id="target" style="margin:auto;background:grey;"></div>
+
+</body>
+</html>

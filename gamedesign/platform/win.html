@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title> The Adventures of Ryzolo The Slime </title>
+<script src="https://simplycodingcourses.com/files/simplyjs/simply.js"></script>
+		<script>
+			function start(){
+			sjs.open();
+			var background = new sjs.Image("Images/menubackdrop.png");
+				background.setSize(711, 400);
+
+			var win_text = new sjs.Text("Adventure Complete!", 44, "blue");
+			win_text.center().offset(0,-50);
+
+			var menuBtn = new sjs.Button("Main Menu", function(){
+			window.location = "index.html";
+			});
+			menuBtn.center();
+
+
+			}
+		</script>
+</head>
+<body onload="start()">
+<h1> Victory! </h1>
+
+<div id="target" style="margin:auto;background:grey;"></div>
+</body>
+</html>

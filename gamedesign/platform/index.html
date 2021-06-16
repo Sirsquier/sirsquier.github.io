@@ -1,1 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title> The Adventures of Ryzolo The Slime </title>
+<script src="https://simplycodingcourses.com/files/simplyjs/simply.js"></script>
+	<script>
+				function start(){
+				sjs.open();
+				var background = new sjs.Image("Images/menubackdrop.png");
+				background.setSize(711, 400);
+				var menu_text = new sjs.Text("The Adventures of Ryzolo The Slime", 28, "blue");
 
+				var designBtn = new sjs.Button("Design Level", function(){
+				window.location = "platform.html";
+				});
+				designBtn.center();
+
+				var level1Btn = new sjs.Button("Adventure!", function(){
+				window.location = "level1.html";
+				});
+				level1Btn.center().offset(0, 50);
+
+
+				var info_text = new sjs.Text("Created By Sir Squier", 20, "blue");
+				info_text.bottom().centerH();
+				}
+	</script>
+</head>
+<body onload="start()">
+<h1> Menu </h1>
+
+<div id="target" style="margin:auto;background:grey;"></div>
+</body>
+</html>
