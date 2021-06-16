@@ -1,0 +1,41 @@
+
+<html>
+<head>
+<title> Menu </title>
+<script src="https://simplycodingcourses.com/files/simplyjs/simply.js"></script>
+<script>
+function start(){
+sjs.open();
+
+	//menu text
+	var menu_text = new sjs.Text("MENU",25,"blue");
+	menu_text.centerH();
+
+
+	//how to play
+	var game_play = new sjs.Text("Use the arrow keys to move and don't let the ball past you!",25,"blue");
+	game_play.centerH().offset(0,30);
+
+	//button
+
+	var startBtn = new sjs.Button("Start", function(){
+	window.location = "pong.html";
+	});
+
+	startBtn.center();
+
+	//button stuff
+
+	var info_text = new sjs.Text("Created By Luke Stanger",20,"black");
+
+	info_text.bottom().centerH();
+
+} //end start
+</script>
+</head>
+<body onload="start()">
+<h1> Menu </h1>
+
+<div id="target" style="margin:auto;background:grey;"></div>
+</body>
+</html>
